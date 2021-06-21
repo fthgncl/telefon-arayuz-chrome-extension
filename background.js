@@ -15,7 +15,12 @@ var contextMenuItem = [
     "title": "Kurulum İşlemlerini Durdur",
     "contexts": ["browser_action"]
 }
-
+,
+{
+    "id": "test",
+    "title": "test",
+    "contexts": ["browser_action"]
+}
 ]
 
 for(var i = 0 ; i < contextMenuItem.length ; i++){
@@ -38,6 +43,19 @@ function ClickedContextMenuItem(info, tab) {
             }
         }
         break;
+
+        case "test":
+        {
+            fetch('https://jsonplaceholder.typicode.com/posts/1')
+              .then(function(response){
+                response.json()
+                  .then(function(user){
+                    alert(user.title)
+                  })
+            })
+        }
+        break;
+
 
 
 
