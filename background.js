@@ -8,20 +8,40 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 
 });
 
-var contextMenuItem = {
+
+var contextMenuItem = [
+{
     "id": "IslemleriDurdurButon",
     "title": "Kurulum İşlemlerini Durdur",
     "contexts": ["browser_action"]
 }
-chrome.contextMenus.create(contextMenuItem);
-chrome.contextMenus.onClicked.addListener(makeVisible);
 
-function makeVisible(info, tab) {
-    if (tab.url.indexOf("chrome://") == -1 ){
-        chrome.tabs.executeScript({file: "kurulumdurdur.js"})
+]
+
+for(var i = 0 ; i < contextMenuItem.length ; i++){
+    chrome.contextMenus.create(contextMenuItem[i]);
+}
+chrome.contextMenus.onClicked.addListener(ClickedContextMenuItem);
+
+function ClickedContextMenuItem(info, tab) {
+    
+    switch(info.menuItemId){
+
+        case "IslemleriDurdurButon":
+        {
+            if (tab.url.indexOf("chrome://") == -1 ){
+                chrome.tabs.executeScript({file: "kurulumdurdur.js"})
+            }
+            else
+            {
+                alert("• Lütfen kurulum işlemini durdurmak telefon arayüz sayfasına gidin.")
+            }
+        }
+        break;
+
+
+
+
     }
-    else
-    {
-        alert("• Lütfen kurulum işlemini durdurmak telefon arayüz sayfasına gidin.")
-    }
+
 }

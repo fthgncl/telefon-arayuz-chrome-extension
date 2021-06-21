@@ -116,16 +116,20 @@ function arayuzislemleri(){
                 document.getElementsByName("AccountPassword")[0].value = telefon.password.replace("{dahilino}",DahiliNo)
                 document.getElementsByName("server1")[0].value = telefon.serverhost
                 document.getElementById("btn_confirm1").click()
-                alert("• Telefon Kurulumu Tamamlandı")
-                save_cookie("asama","0")
-                delete_cookie("telmodel")
-                window.location.href = '/'
+                islemleri_bitir(DahiliNo)
             }
             break;
 
             
 
         }
+    }
+
+    function islemleri_bitir(DahiliNum){
+        alert("• "+DahiliNum+" Dahili Numaralı Telefon Kurulumu Tamamlandı")
+        save_cookie("asama","0")
+        delete_cookie("telmodel")
+        window.location.href = '/'
     }
     //  #################################
 
