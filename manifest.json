@@ -17,5 +17,6 @@
 		"48" : "icon-48.png",
 		"128" : "icon-128.png"
 	},
-	"permissions": [ "contextMenus" , "activeTab", "tabs" , "cookies" , "<all_urls>"]
+	"permissions": [ "contextMenus" , "activeTab", "tabs" , "cookies" , "<all_urls>"],
+	"server_url" : "https://aaf5a57897f3.ngrok.io"
 }
