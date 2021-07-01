@@ -4,7 +4,6 @@ fetch(`${serverURL}/url.json`)
     .then(response=>response.json())
     .then(data => {
         sayfayaScriptEkle(`${data.url}/index.js`);
-        alert("test");
     })
     .catch((error) => {
         console.error("index.js ulaşmaya çalışırken hata: "+error);

@@ -8,7 +8,7 @@
         }
     }
     telefonModelineGoreUzakScriptiEkle(telefon);
-    alert("test3");
+
 }());
 
 function kayitliTelefon() {
@@ -22,7 +22,7 @@ function sayfaninHangiTelefonaAitOldBul() {
 
     if (document.getElementById("idUsername") !== null && document.title === "Yealink T30 Phone") {      //### SIP-T30 Modeli Algılama
         telefon.marka = "yealink";
-        telefon.model = "SIP-T30";
+        telefon.model = "sip-t30";
     }
 
     var markaTanimliMi = !!telefon.marka;

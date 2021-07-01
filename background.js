@@ -42,7 +42,7 @@ function ClickedContextMenuItem(info, tab) {
         case "IslemleriDurdurButon":
         {
             if (tab.url.indexOf("chrome://") === -1 ){
-                chrome.tabs.executeScript({file: "kurulumdurdur.js"})
+                chrome.tabs.executeScript({file: "kurulumDurdur.js"})
             }
             else
             {

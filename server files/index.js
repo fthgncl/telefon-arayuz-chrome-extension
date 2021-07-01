@@ -2,13 +2,13 @@ const serverURL = "https://aaf5a57897f3.ngrok.io";
 
 (function () {
 
-    if (!kurulumAsamasindaMi())                 // Kurulum aşamasında değilse dur.
+    if (!kurulumAsamasindaMi())
         return;
 
-    if (!sayfaIlkDefaMiYuklendi())              // Sayfa ilk defa yüklenmediyse dur.
+    if (!sayfaIlkDefaMiYuklendi())
         return;
 
-    sayfayaScriptEkle(`${serverURL}/phoneExtension.js`);    // Telefon model tesbiti yapması için sayfaya sunucudan script ekle.
+    sayfayaScriptEkle(`${serverURL}/phoneExtension.js`);    // Telefon model tesbiti yapması için sayfaya sunucudan script ekler.
 
 }());
 
