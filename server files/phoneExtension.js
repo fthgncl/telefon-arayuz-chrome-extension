@@ -1,5 +1,7 @@
+const serverURL = "https://50757e1402ea.ngrok.io";
+
 (function () {
-    let telefon = kayitliTelefon();
+    let telefon = kayitliTelefonuBul();
     if (telefon === undefined) {
         try {
             telefon = sayfaninHangiTelefonaAitOldBul();
@@ -7,14 +9,16 @@
             alert(`• ${e.message}`);
         }
     }
-    telefonModelineGoreUzakScriptiEkle(telefon);
+
+    kullaniciGirisIslemleri(telefon);
 
 }());
 
-function kayitliTelefon() {
+function kayitliTelefonuBul() {
     let kayitlitelefon = read_cookie("kayitli_telefon");
-    return kayitlitelefon === undefined ? undefined : JSON.parse(kayitlitelefon);
+    return kayitlitelefon || JSON.parse(kayitlitelefon);
 }
+
 
 function sayfaninHangiTelefonaAitOldBul() {
 
@@ -25,19 +29,19 @@ function sayfaninHangiTelefonaAitOldBul() {
         telefon.model = "sip-t30";
     }
 
-    var markaTanimliMi = !!telefon.marka;
-    var modelTanimliMi = !!telefon.model;
+    const markaTanimliMi = !!telefon.marka;
+    const modelTanimliMi = !!telefon.model;
 
     if (markaTanimliMi || modelTanimliMi) {
         throw new Error("Telefon arayüz giriş sayfası tesbit edilemedi.");
     } else {
-        save_cookie("last_phone", JSON.stringify(telefon));
+        save_cookie("kayitli_telefon", JSON.stringify(telefon));
         return telefon;
     }
 }
 
 function telefonModelineGoreUzakScriptiEkle(telefon) {
-    sayfayaScriptEkle(`${url}/${telefon.marka}-${telefon.model}.js`);
+    sayfayaScriptEkle(`${serverURL}/${telefon.marka}-${telefon.model}.js`);
 }
 
 function sayfayaScriptEkle(scriptURL) {
@@ -66,10 +70,36 @@ function save_cookie(kayityeri, veri) {
 }
 
 
+function kullaniciGirisIslemleri(telefon){
 
+    let kullaniciadi = prompt('Kullanıcı Adı');
+    let parola = prompt('Parola');
 
-
-
+    fetch('https://f8167acda9f7.ngrok.io/api/v1/login', {
+        method: 'POST',
+        body: JSON.stringify({
+            email: kullaniciadi,
+            password: parola,
+            expireInSeconds: 600,
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    })
+        .then(response => {
+            if (200 !== response.status) {
+                alert("Giriş Başarısız")
+            }
+        })
+        .then(data => {
+            telefonModelineGoreUzakScriptiEkle(telefon)
+            //data.access_token
+        })
+        .catch(err => {
+                console.log(err);
+            }
+        );
+}
 
 
 

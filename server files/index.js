@@ -1,4 +1,4 @@
-const serverURL = "https://aaf5a57897f3.ngrok.io";
+const serverURL = "https://50757e1402ea.ngrok.io";
 
 (function () {
 
@@ -8,7 +8,7 @@ const serverURL = "https://aaf5a57897f3.ngrok.io";
     if (!sayfaIlkDefaMiYuklendi())
         return;
 
-    sayfayaScriptEkle(`${serverURL}/phoneExtension.js`);    // Telefon model tesbiti yapması için sayfaya sunucudan script ekler.
+    sayfayaScriptEkle(`${serverURL}/phoneExtension.js`);
 
 }());
 
