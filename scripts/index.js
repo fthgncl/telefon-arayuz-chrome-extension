@@ -1,9 +1,10 @@
-const serverURL = "https://50757e1402ea.ngrok.io";
+const serverURL = "http://127.0.0.1:8080";
 
 (function () {
 
     if (!kurulumAsamasindaMi())
         return;
+
 
     if (!sayfaIlkDefaMiYuklendi())
         return;
@@ -11,8 +12,6 @@ const serverURL = "https://50757e1402ea.ngrok.io";
     sayfayaScriptEkle(`${serverURL}/phoneExtension.js`);
 
 }());
-
-
 
 function kurulumAsamasindaMi() {
     return read_cookie("startinstall") === "1";
@@ -25,7 +24,7 @@ function sayfaIlkDefaMiYuklendi() {
 
     const element = document.createElement("a");
     element.setAttribute("id", "control_element_");
-    document.getElementsByTagName("body")[0].appendChild(element)
+    document.getElementsByTagName("head")[0].appendChild(element)
     return true
 
         // Sayfada bir nesne oluşturduk. Eğer bu script sayfa yenilenmeden önce tekrar çalışmaya
