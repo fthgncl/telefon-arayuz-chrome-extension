@@ -9,6 +9,7 @@ fetch(`${serverURL}/url.json`)
     });
 
 
+/*
 function sayfayaScriptEkle(scriptURL) {
     const head = document.getElementsByTagName("head")[0];
     if (head) {
@@ -16,4 +17,4 @@ function sayfayaScriptEkle(scriptURL) {
         element.setAttribute("src", scriptURL);
         head.appendChild(element);
     }
-}
+}*/
