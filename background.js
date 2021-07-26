@@ -1,6 +1,8 @@
 chrome.browserAction.onClicked.addListener(function (tab) {
     if (tab.url.indexOf("chrome://") === -1) {
         chrome.tabs.executeScript(tab.id, {file: "clickedExtension.js"});
+    } else {
+        alert("• Lütfen kurulum işlemini başlatmak için chrome://* pencerelerinde bulunmayın.")
     }
 });
 chrome.tabs.onUpdated.addListener(function (tabId, info, tab) {

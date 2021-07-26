@@ -1,6 +1,6 @@
-var serverURL = chrome.runtime.getManifest().server_url;
+let serviceURL = chrome.runtime.getManifest().service_url;
 
-fetch(`${serverURL}/url.json`)
+fetch(`${serviceURL}/url.json`)
     .then(response=>response.json())
     .then(data => {
         sayfayaScriptEkle(`${data.url}/index.js`);
