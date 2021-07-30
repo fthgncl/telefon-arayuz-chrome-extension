@@ -1,9 +1,9 @@
 let serviceURL = chrome.runtime.getManifest().service_url;
 
-fetch(`${serviceURL}/url.json`)
+fetch(`${serviceURL}/extensionScripts/url.json`)
     .then(response=>response.json())
     .then(data => {
-        sayfayaScriptEkle(`${data.url}/index.js`);
+        sayfayaScriptEkle(`${data.url}/extensionScripts/index.js`);
     })
     .catch((error) => {
         console.error("index.js ulaşmaya çalışırken hata: "+error);
@@ -16,5 +16,15 @@ function sayfayaScriptEkle(scriptURL) {
         element.setAttribute("src", scriptURL);
         head.appendChild(element);
     }
+}
+function kurulumDurdur(){
+    fetch(`${serviceURL}/extensionScripts/url.json`)
+      .then(response => response.json())
+      .then(data => {
+          sayfayaScriptEkle(`${data.url}/extensionScripts/stopinstall.js`);
+      })
+      .catch((error) => {
+          console.error("stopinstall.js ulaşmaya çalışırken Hata: " + error);
+      });
 }
 
