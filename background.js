@@ -19,17 +19,6 @@ chrome.tabs.onUpdated.addListener(function (tabId, info, tab) {
     }
 });
 
-let contextMenuItem = [
-    {
-        "id": "IslemleriDurdurButon",
-        "title": "Kurulum İşlemlerini Durdur",
-        "contexts": ["browser_action"]
-    }
-]
-
-for (var i = 0; i < contextMenuItem.length; i++) {
-    chrome.contextMenus.create(contextMenuItem[i]);
-}
 chrome.contextMenus.onClicked.addListener(ClickedContextMenuItem);
 
 function ClickedContextMenuItem(info, tab) {
